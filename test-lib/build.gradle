@@ -36,28 +36,28 @@ dependencies {
 }
 
 publishing {
+
+    repositories {
+        maven {
+            name ="GitHubPackages"
+            url = uri("https://maven.pkg.github.com/mycariq-02/test-lib/packages")
+            credentials {
+                username =  project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+//                username = "cariq-02"
+//                password = "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"
+            }
+        }
+
+    }
+
     publications {
         release(MavenPublication) {
             from components.findByName('release')
             artifactId = 'test-lib'
             groupId = 'com.github.mycariq-02'
             version = '1.0.1'
-            artifact("$buildDir/outputs/aar/test-lib-release.aar")
+            artifact("build/outputs/aar/test-lib-release.aar")
         }
-    }
-
-    repositories {
-        maven {
-            name = "GithubPackages"
-            url = uri("https://maven.pkg.github.com/mycariq-02")
-            credentials {
-//                    username = System.getenv("GIT_USERNAME")
-//                    password = System.getenv("GIT_PASSWORD")
-                username = "cariq-02"
-                password = "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"
-
-            }
-        }
-
     }
 }
