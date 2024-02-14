@@ -81,11 +81,11 @@ afterEvaluate {
         }
 
         publications {
-            release(MavenPublication) {
+            mavenJava(MavenPublication) {
                 from components.findByName('release')
-                artifactId = 'test-lib-release'
+                artifactId = 'test-lib'
                 groupId = 'com.github.mycariq-02'
-                version = '1.0.4'
+                version = '1.0.6'
 //                artifact("$buildDir/outputs/aar/test-lib-release.aar")
                 artifact androidSourcesJar
             }
