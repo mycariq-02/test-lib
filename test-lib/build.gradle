@@ -74,18 +74,18 @@ afterEvaluate {
 //                username =  project.findProperty("gpr.user") ?: System.getenv("USERNAME")
 //                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
                     username = "cariq-02"
-                    password = "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"
+                    password = "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"
                 }
             }
 
         }
 
         publications {
-            mavenJava(MavenPublication) {
+            release(MavenPublication) {
                 from components.findByName('release')
                 artifactId = 'test-lib'
                 groupId = 'com.github.mycariq-02'
-                version = '1.0.8'
+                version = '1.0.9'
 //                artifact("$buildDir/outputs/aar/test-lib-release.aar")
                 artifact androidSourcesJar
             }
