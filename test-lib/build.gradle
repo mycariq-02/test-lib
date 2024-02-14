@@ -74,7 +74,7 @@ afterEvaluate {
 //                username =  project.findProperty("gpr.user") ?: System.getenv("USERNAME")
 //                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
                     username = "cariq-02"
-                    password = "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"
+                    password = "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"
                 }
             }
 
