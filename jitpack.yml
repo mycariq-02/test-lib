@@ -4,4 +4,4 @@ before_install:
   -./scripts/prepareJitpackEnvironment.sh
 install:
   -FILE="-Dfile=test-lib-release.aar"
-  -mvn install:install-file $FILE -DgroupId=com.github.mycariq-02 -DartifactId=test-lib -Dversion=1.0.1 -Dpackaging=aar -DgeneratePom=true
+  -mvn install:install-file $FILE -DgroupId=com.github.mycariq-02 -DartifactId=test-lib -Dversion=1.0.6 -Dpackaging=aar -DgeneratePom=true
