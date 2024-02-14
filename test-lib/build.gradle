@@ -64,12 +64,6 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }*/
 
-
-artifacts {
-//    archives sourcesJar
-//    archives javadocJar
-}
-
 afterEvaluate {
     publishing {
         repositories {
@@ -91,10 +85,12 @@ afterEvaluate {
                 from components.findByName('release')
                 artifactId = 'test-lib-release'
                 groupId = 'com.github.mycariq-02'
-                version = '1.0.3'
-                artifact("$buildDir/outputs/aar/test-lib-release.aar")
+                version = '1.0.4'
+//                artifact("$buildDir/outputs/aar/test-lib-release.aar")
+                artifact androidSourcesJar
             }
         }
     }
 
 }
+
