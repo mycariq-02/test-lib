@@ -86,7 +86,7 @@ publishing {
             from components.findByName('release')
             groupId = 'com.github.mycariq-02'
             artifactId = 'test-lib'
-            version = '1.0.12'
+            version = '1.0.13'
             artifact("$buildDir/outputs/aar/test-lib-release.aar")// this fails the jitpack build
             artifact androidSourcesJar    //this is the jar file creates in m2
 
@@ -107,10 +107,10 @@ publishing {
 
     }
 
-    repositories {
+    /*repositories {
         maven {
             url "$buildDir/releases"
         }
-    }
+    }*/
 }
 
