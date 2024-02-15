@@ -2,7 +2,7 @@ package com.example.test_lib;
 
 import android.util.Log;
 
-public class CariqUtil {
+public final class CariqUtil {
 
     /*public static void main(String[] args) {
 
