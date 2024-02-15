@@ -64,7 +64,7 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }*/
 
-afterEvaluate {
+//afterEvaluate {
     publishing {
         repositories {
             maven {
@@ -81,16 +81,19 @@ afterEvaluate {
         }
 
         publications {
-            mavenJava(MavenPublication) {
+            release(MavenPublication) {
                 from components.findByName('release')
                 groupId = 'com.github.mycariq-02'
                 artifactId = 'test-lib'
-                version = '1.0.10'
+                version = '1.0.11'
+                /*afterEvaluate {
+                    artifact bundleReleaseAar
+                }*/
 //                artifact("$buildDir/outputs/aar/test-lib-release.aar")    // this fails the jitpack build
-//                artifact androidSourcesJar
+//                artifact androidSourcesJar    //this is the jar file creates in m2
             }
         }
-    }
+//    }
 
 }
 
