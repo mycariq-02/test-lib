@@ -63,44 +63,48 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }*/
 
-//afterEvaluate {
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/mycariq-02/test-lib")
-            credentials {
-                authentication
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+afterEvaluate {
+    publishing {
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/mycariq-02/test-lib")
+                credentials {
+                    authentication
+                    username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                    password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
 //                    username = "cariq-02"
 //                    password = "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"
+                }
             }
+
         }
 
-    }
-
-    publications {
-        release(MavenPublication) {
-            from components.findByName('release')
-            groupId = 'com.github.mycariq-02'
-            artifactId = 'test-lib'
-            version = '1.0.14'
-            afterEvaluate {
-                artifact("$buildDir/outputs/aar/test-lib-release.aar")
+        publications {
+            release(MavenPublication) {
+                from components.findByName('release')
+                groupId = 'com.github.mycariq-02'
+                artifactId = 'test-lib'
+                version = '1.0.14'
+//                afterEvaluate {
+                    artifact("$buildDir/outputs/aar/test-lib-release.aar")
 // this fails the jitpack build
-                artifact androidSourcesJar    //this is the jar file creates in m2
+                    artifact androidSourcesJar    //this is the jar file creates in m2
+//                }
+
             }
-
-        }
-//    }
-
     }
 
-    /*repositories {
-        maven {
-            url "$buildDir/releases"
         }
-    }*/
-}
 
+        /*repositories {
+            maven {
+                url "$buildDir/releases"
+            }
+        }*/
+    }
+
+/*
+tasks.named(':test-lib:publishReleasePublicationToMavenLocal') {
+    dependsOn(':test-lib:bundleReleaseAar')
+}*/
