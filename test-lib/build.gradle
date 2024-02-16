@@ -11,13 +11,11 @@ buildscript {
 
 /*apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'*/
-
 plugins {
     id 'com.android.library'
     id 'maven-publish'
 }
-
-group = 'com.github.mycariq-02'
+group = 'com.github.mycariq-02.test-lib'
 version = '1.0.3'
 
 android {
@@ -72,6 +70,7 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/mycariq-02/test-lib")
             credentials {
+                authentication
                 username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
                 password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
 //                    username = "cariq-02"
@@ -86,9 +85,13 @@ publishing {
             from components.findByName('release')
             groupId = 'com.github.mycariq-02'
             artifactId = 'test-lib'
-            version = '1.0.13'
-            artifact("$buildDir/outputs/aar/test-lib-release.aar")// this fails the jitpack build
-            artifact androidSourcesJar    //this is the jar file creates in m2
+            version = '1.0.14'
+            afterEvaluate {
+                artifact("$buildDir/outputs/aar/test-lib-release.aar")
+// this fails the jitpack build
+                artifact androidSourcesJar    //this is the jar file creates in m2
+            }
+
         }
 //    }
 
