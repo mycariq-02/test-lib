@@ -85,7 +85,7 @@ afterEvaluate {
                 from components.findByName('release')
                 groupId = 'com.github.mycariq-02'
                 artifactId = 'test-lib'
-                version = '1.0.14'
+                version = '1.0.15'
 //                afterEvaluate {
                     artifact("$buildDir/outputs/aar/test-lib-release.aar")
 // this fails the jitpack build
